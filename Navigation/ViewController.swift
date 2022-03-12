@@ -140,15 +140,8 @@ class FeedViewNavigationController: UINavigationController, MyDataSendingDelegat
     }
 }
 
-//-----------NewsFeed-------------
+//-----------Profile-------------
 
-class ProfileController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.title = "Profile"
-    }
-}
 
 class ProfileNavigationController: UINavigationController {
     override func viewDidLoad() {
@@ -156,7 +149,7 @@ class ProfileNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
         self.tabBarItem.title = "Profile"
         
-        let controllerOne = ProfileController()
+        let controllerOne = ProfileViewController()
         
         self.viewControllers = [controllerOne]
         self.popToRootViewController(animated: true)
