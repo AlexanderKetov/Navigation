@@ -9,8 +9,11 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    private var statusText: String = ""
+    
     var statusButton = UIButton(frame: CGRect(x: 16, y: 16+80+160+16, width: 0, height: 50))
-    var statusLabel = UILabel(frame: CGRect(x: 200, y: 16+80+160+16-54, width: 160, height: 20))
+    var statusLabel = UILabel(frame: CGRect(x: 200, y: 16+80+90, width: 160, height: 20))
+    let statusTextField = UITextField(frame: CGRect(x: 200, y: 16+80+120, width: 160, height: 40))
     
     
     override func layoutSubviews () {
@@ -61,11 +64,28 @@ class ProfileHeaderView: UIView {
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
         self.addSubview(statusLabel)
-        print("OK")
+        
+        //Status Text Field
+        statusTextField.text = "Insert your status"
+        statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
+        statusTextField.textColor = .black
+        statusTextField.textAlignment = .center
+        statusTextField.backgroundColor = .white
+        statusTextField.layer.cornerRadius = 12
+        statusTextField.layer.borderWidth = 1
+        statusTextField.layer.borderColor = UIColor.black.cgColor
+        statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        self.addSubview(statusTextField)
+        
     }
     
     @objc func buttonPressed () {
         print(statusLabel.text ?? 0)
+        statusLabel.text = statusText
+    }
+    
+    @objc func statusTextChanged () {
+        statusText = statusTextField.text ?? ""
     }
     
 }
