@@ -13,6 +13,10 @@ protocol MyDataSendingDelegateProtocol {
     func sendDataToNavigationController(_ : Post)
 }
 
+protocol LogInViewDelegateProtocol {
+    func sendDataToNavigationController()
+}
+
 struct Post {
     var title: String
 }
@@ -158,6 +162,7 @@ class FeedViewNavigationController: UINavigationController, MyDataSendingDelegat
     func sendDataToNavigationController(_ data: Post) {  //функция обработчик делегата
         controllerTwo.data = data
         self.pushViewController(controllerTwo, animated: true)
+        print("delegate")
     }
     
     override func viewDidLoad() {
@@ -202,6 +207,8 @@ class ProfileNavigationController: UINavigationController {
 
 
 class TabBar: UITabBarController {
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -219,19 +226,20 @@ class TabBar: UITabBarController {
         
         tabOne.tabBarItem = tabOneBarItem
         
-        
         // Create Tab Favorite
         let tabTwo = ProfileNavigationController()
-        let tabTwoBarItem2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        let tabTwoBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
-        tabTwo.tabBarItem = tabTwoBarItem2
+        tabTwo.tabBarItem = tabTwoBarItem
         
-        self.viewControllers = [tabOne, tabTwo]
-
+        // Create Tab LogIn
+        let tabThree = LogInViewController()
+        let tabThreeBarItem = UITabBarItem(title: "Login", image: nil, selectedImage: nil)
         
-        // Create Tab NewsFeed
+        tabThree.tabBarItem = tabThreeBarItem
         
-        // Create Tab Profile
-
+        self.viewControllers = [tabOne, tabTwo, tabThree]
+        self.selectedIndex = 2
+        
     }
 }

@@ -134,8 +134,6 @@ class ProfileHeaderView: UIView {
         
     }
     
-    
-    
     @objc func buttonPressed () {
         print(statusLabel.text ?? 0)
         statusLabel.text = statusText

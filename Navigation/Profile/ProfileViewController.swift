@@ -18,9 +18,8 @@ class ProfileViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.lightGray
         self.title = "Profile"
-        print("OKOK")
         
-        self.view.addSubview(profileHeader)
+        self.view.addSubview(profileHeader)     
         //profileHeader autoLayout
         profileHeader.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
