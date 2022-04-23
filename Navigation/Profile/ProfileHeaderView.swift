@@ -7,6 +7,14 @@
 
 import UIKit
 
+struct Post {
+    var author: String
+    var description: String
+    var image: String
+    var likes: Int
+    var views: Int
+}
+
 class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
@@ -38,12 +46,12 @@ class ProfileHeaderView: UIView {
         //autoLayout
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),       //Top
-            profileImage.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
+            profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),       //Top
+            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),       //Left
             profileImage.heightAnchor.constraint(equalToConstant: 160), //Height
-            profileImage.widthAnchor.constraint(equalToConstant: 160)   //Width
+            profileImage.widthAnchor.constraint(equalToConstant: 160),   //Width
         ])
-        
+
         //Name Label
         nameLabel.text = "Hipster Cat"
         nameLabel.font = .systemFont(ofSize: 18, weight: .bold)
@@ -52,12 +60,12 @@ class ProfileHeaderView: UIView {
         //autoLayout
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),       //Top
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),       //Top
             nameLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),       //Left
             nameLabel.heightAnchor.constraint(equalToConstant: 20), //Height
             nameLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
         ])
-        
+
         //Status Button
         statusButton.backgroundColor = .systemBlue
         statusButton.setTitle("Show status", for: .normal)
@@ -73,11 +81,11 @@ class ProfileHeaderView: UIView {
         statusButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             statusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),       //Top
-            statusButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
-            statusButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
+            statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),       //Left
+            statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16), //Right
             statusButton.heightAnchor.constraint(equalToConstant: 50) //Height
         ])
-        
+
         //Status Label
         statusLabel.text = "Waiting for something..."
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
@@ -91,7 +99,7 @@ class ProfileHeaderView: UIView {
             statusLabel.heightAnchor.constraint(equalToConstant: 20), //Height
             statusLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
         ])
-        
+
         //Status Text Field
         statusTextField.text = "Insert your status"
         statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
@@ -111,27 +119,27 @@ class ProfileHeaderView: UIView {
             statusTextField.heightAnchor.constraint(equalToConstant: 40), //Height
             statusTextField.widthAnchor.constraint(equalToConstant: 160)   //Width
         ])
-        
-        //name Button
-        nameButton.backgroundColor = .systemBlue
-        nameButton.setTitle("Show title", for: .normal)
-        nameButton.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
-        nameButton.addTarget(self, action: #selector(nameButtonPressed), for: .touchUpInside)
-        //Status Button Shadow
-        nameButton.layer.shadowRadius = 4;
-        nameButton.layer.shadowColor = UIColor.black.cgColor;
-        nameButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
-        nameButton.layer.shadowOpacity = 0.7;
-        self.addSubview(nameButton)
-        //autoLayout
-        nameButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 0),       //Bot
-            nameButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
-            nameButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
-            nameButton.heightAnchor.constraint(equalToConstant: 50) //Height
-        ])
-        
+
+//        //name Button
+//        nameButton.backgroundColor = .systemBlue
+//        nameButton.setTitle("Show title", for: .normal)
+//        nameButton.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
+//        nameButton.addTarget(self, action: #selector(nameButtonPressed), for: .touchUpInside)
+//        //Status Button Shadow
+//        nameButton.layer.shadowRadius = 4;
+//        nameButton.layer.shadowColor = UIColor.black.cgColor;
+//        nameButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
+//        nameButton.layer.shadowOpacity = 0.7;
+//        self.addSubview(nameButton)
+//        //autoLayout
+//        nameButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            nameButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 0),       //Bot
+//            nameButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
+//            nameButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
+//            nameButton.heightAnchor.constraint(equalToConstant: 50) //Height
+//        ])
+//
     }
     
     @objc func buttonPressed () {

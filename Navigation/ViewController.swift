@@ -10,21 +10,21 @@ import UIKit
 //-----------NewsFeed-------------
 
 protocol MyDataSendingDelegateProtocol {
-    func sendDataToNavigationController(_ : Post)
+    func sendDataToNavigationController(_ : PostData)
 }
 
 protocol LogInViewDelegateProtocol {
     func sendDataToNavigationController()
 }
 
-struct Post {
+struct PostData {
     var title: String
 }
 
 class FeedViewController: UIViewController {
     
     var delegate: MyDataSendingDelegateProtocol? = nil //объявляем делегата
-    var data = Post(title: "Test string")
+    var data = PostData(title: "Test string")
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -136,7 +136,7 @@ class InfoViewController: UIViewController {
 
 class PostViewController: UIViewController {
     
-    var data = Post(title: "Post View")
+    var data = PostData(title: "Post View")
     let InfoView = InfoViewController()
     
     override func viewDidLoad() {
@@ -159,7 +159,7 @@ class FeedViewNavigationController: UINavigationController, MyDataSendingDelegat
     let controllerOne = FeedViewController()
     let controllerTwo = PostViewController()
 
-    func sendDataToNavigationController(_ data: Post) {  //функция обработчик делегата
+    func sendDataToNavigationController(_ data: PostData) {  //функция обработчик делегата
         controllerTwo.data = data
         self.pushViewController(controllerTwo, animated: true)
         print("delegate")
@@ -193,7 +193,7 @@ class ProfileNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
         self.tabBarItem.title = "Profile"
         
-        let controllerOne = ProfileViewController()
+        let controllerOne = ProfileTableHederViewController()   //Заменил чтоб появилась таблица с постами
         
         self.viewControllers = [controllerOne]
         self.popToRootViewController(animated: true)
