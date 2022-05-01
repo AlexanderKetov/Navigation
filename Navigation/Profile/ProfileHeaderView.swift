@@ -15,7 +15,7 @@ struct Post {
     var views: Int
 }
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private var statusText: String = ""
     
@@ -27,12 +27,14 @@ class ProfileHeaderView: UIView {
     let nameButton      = UIButton()
     
     
-    override func layoutSubviews () {
-        super.layoutSubviews()
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+//    override func layoutSubviews () {
+//        super.layoutSubviews()
+//    }
+//
+//    override func draw(_ rect: CGRect) {
+//        super.draw(rect)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
         //Profile Image
         profileImage.image = UIImage(named: "ProfileCat.jpg")
@@ -42,12 +44,12 @@ class ProfileHeaderView: UIView {
         profileImage.clipsToBounds = true
         profileImage.layer.borderWidth = 3
         profileImage.layer.borderColor = UIColor.white.cgColor
-        self.addSubview(profileImage)
+        contentView.addSubview(profileImage)
         //autoLayout
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),       //Top
-            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),       //Left
+            profileImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),       //Top
+            profileImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),       //Left
             profileImage.heightAnchor.constraint(equalToConstant: 160), //Height
             profileImage.widthAnchor.constraint(equalToConstant: 160),   //Width
         ])
@@ -56,11 +58,11 @@ class ProfileHeaderView: UIView {
         nameLabel.text = "Hipster Cat"
         nameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         nameLabel.textColor = .black
-        self.addSubview(nameLabel)
+        contentView.addSubview(nameLabel)
         //autoLayout
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),       //Top
+            nameLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 27),       //Top
             nameLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),       //Left
             nameLabel.heightAnchor.constraint(equalToConstant: 20), //Height
             nameLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
@@ -76,21 +78,21 @@ class ProfileHeaderView: UIView {
         statusButton.layer.shadowColor = UIColor.black.cgColor;
         statusButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
         statusButton.layer.shadowOpacity = 0.7;
-        self.addSubview(statusButton)
+        contentView.addSubview(statusButton)
         //autoLayout
         statusButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             statusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),       //Top
-            statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),       //Left
-            statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16), //Right
-            statusButton.heightAnchor.constraint(equalToConstant: 50) //Height
+            statusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),       //Left
+            statusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16), //Right
+            statusButton.heightAnchor.constraint(equalToConstant: 50), //Height
         ])
 
         //Status Label
         statusLabel.text = "Waiting for something..."
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
-        self.addSubview(statusLabel)
+        contentView.addSubview(statusLabel)
         //autoLayout
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -110,7 +112,7 @@ class ProfileHeaderView: UIView {
         statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        self.addSubview(statusTextField)
+        contentView.addSubview(statusTextField)
         //autoLayout
         statusTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -140,6 +142,10 @@ class ProfileHeaderView: UIView {
 //            nameButton.heightAnchor.constraint(equalToConstant: 50) //Height
 //        ])
 //
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @objc func buttonPressed () {

@@ -81,6 +81,7 @@ class PostTableViewCell: UITableViewCell {
             contentCellView.topAnchor.constraint(equalTo: contentView.topAnchor),       //Top
             contentCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),       //Left
             contentCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), //Right
+            //contentCellView.heightAnchor.constraint(equalToConstant:500),
             contentCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor), //Bot
         ])
         //Настройка View
@@ -91,8 +92,7 @@ class PostTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             authorLabel.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: 0),
             authorLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: 16),
-            //authorLabel.heightAnchor.constraint(equalToConstant: 20), //Height
-            //authorLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
+            authorLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
         ])
         //Label Image
         contentCellView.addSubview(postImage)

@@ -23,6 +23,8 @@ class ProfileHeaderTableView: UITableViewHeaderFooterView {
             header.topAnchor.constraint(equalTo: contentView.topAnchor),
             header.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            //header.heightAnchor.constraint(equalToConstant: 500), //Height
             header.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
         ])

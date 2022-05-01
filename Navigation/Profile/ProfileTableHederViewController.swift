@@ -56,11 +56,11 @@ class ProfileTableHederViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self) )
-        tableView.register(ProfileHeaderTableView.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileHeaderTableView.self) )
-        tableView.estimatedRowHeight = 800
-        tableView.rowHeight = UITableView.automaticDimension //500
-        tableView.estimatedSectionHeaderHeight = 30
-        tableView.sectionHeaderHeight = 300 //почему-то не работает UITableView.automaticDimension
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileHeaderView.self) )
+//        tableView.estimatedRowHeight = 800
+//        tableView.rowHeight = UITableView.automaticDimension //500
+//        tableView.estimatedSectionHeaderHeight = 300
+//        tableView.sectionHeaderHeight = UITableView.automaticDimension //почему-то не работает
         tableView.clipsToBounds = false
         return tableView
     }()
@@ -73,6 +73,14 @@ class ProfileTableHederViewController: UIViewController {
         self.view.addSubview(postScrollView)
         postScrollView.addSubview(tablePost)
         
+        let headView = ProfileHeaderView()
+        
+        tablePost.tableHeaderView = headView
+        
+        if let header = tablePost.tableHeaderView {
+            header.frame.size.height = 280
+        }
+        
         postScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postScrollView.topAnchor.constraint(equalTo: self.view.topAnchor),       //Top
@@ -83,10 +91,10 @@ class ProfileTableHederViewController: UIViewController {
         
         tablePost.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tablePost.topAnchor.constraint(equalTo: postScrollView.contentLayoutGuide.topAnchor),             //Top
-            tablePost.leadingAnchor.constraint(equalTo: postScrollView.contentLayoutGuide.leadingAnchor),     //Left
-            tablePost.trailingAnchor.constraint(equalTo: postScrollView.contentLayoutGuide.trailingAnchor),   //Right
-            tablePost.bottomAnchor.constraint(equalTo: postScrollView.contentLayoutGuide.bottomAnchor),       //Bot
+            tablePost.topAnchor.constraint(equalTo: postScrollView.topAnchor),             //Top
+            tablePost.leadingAnchor.constraint(equalTo: postScrollView.leadingAnchor),     //Left
+            tablePost.trailingAnchor.constraint(equalTo: postScrollView.trailingAnchor),   //Right
+            tablePost.bottomAnchor.constraint(equalTo: postScrollView.bottomAnchor),       //Bot
             tablePost.widthAnchor.constraint(equalTo: postScrollView.widthAnchor),         //Width
             tablePost.heightAnchor.constraint(equalTo: postScrollView.heightAnchor)         //Heigh
         ])
@@ -109,11 +117,10 @@ extension ProfileTableHederViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileHeaderTableView.self)) as! ProfileHeaderTableView
-        
-        return headerView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileHeaderView.self)) as! ProfileHeaderView
+//        return headerView
+//    }
     
 }
 
