@@ -26,7 +26,12 @@ class LogInViewController: UIViewController, LogInViewDelegateProtocol {
         self.tabBarController?.tabBar.isHidden = true
         logInView.delegate = self
         
+        #if DEBUG
+        self.view.backgroundColor = .gray
+        #else
         self.view.backgroundColor = .white
+        #endif
+        
         
         self.view.addSubview(loginScrollView)
         loginScrollView.addSubview(logInView)

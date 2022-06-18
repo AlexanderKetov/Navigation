@@ -17,10 +17,12 @@ class ProfileViewController: UIViewController {
         self.view.backgroundColor = UIColor.lightGray
         self.title = "Profile"
         
-        self.view.addSubview(profileHeader)     
+        self.view.addSubview(profileHeader)
+        
         //profileHeader autoLayout
         profileHeader.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            
             profileHeader.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),       //Top
             profileHeader.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),       //Left
             profileHeader.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0), //Right

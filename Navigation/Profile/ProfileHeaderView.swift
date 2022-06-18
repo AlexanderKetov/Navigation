@@ -36,6 +36,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
+        self.backgroundColor = .blue
+        
         //Profile Image
         profileImage.image = UIImage(named: "ProfileCat.jpg")
         profileImage.contentMode = .scaleAspectFill
@@ -121,27 +123,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusTextField.heightAnchor.constraint(equalToConstant: 40), //Height
             statusTextField.widthAnchor.constraint(equalToConstant: 160)   //Width
         ])
-
-//        //name Button
-//        nameButton.backgroundColor = .systemBlue
-//        nameButton.setTitle("Show title", for: .normal)
-//        nameButton.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
-//        nameButton.addTarget(self, action: #selector(nameButtonPressed), for: .touchUpInside)
-//        //Status Button Shadow
-//        nameButton.layer.shadowRadius = 4;
-//        nameButton.layer.shadowColor = UIColor.black.cgColor;
-//        nameButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
-//        nameButton.layer.shadowOpacity = 0.7;
-//        self.addSubview(nameButton)
-//        //autoLayout
-//        nameButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            nameButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 0),       //Bot
-//            nameButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
-//            nameButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
-//            nameButton.heightAnchor.constraint(equalToConstant: 50) //Height
-//        ])
-//
     }
     
     required init?(coder: NSCoder) {
