@@ -6,8 +6,11 @@
 //
     
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+    
+    private let imageProcessor = ImageProcessor()
     
     private let contentCellView: UIView = {
         let view = UIView()
@@ -143,7 +146,15 @@ class PostTableViewCell: UITableViewCell {
     func cellContentSetup (post: PostS) {
         authorLabel.text = "Author: " + post.author
         postLabel.text = post.description
-        postImage.image = UIImage(named: post.image)
+        
+        var postImageFilt = UIImage()
+        imageProcessor.processImage(sourceImage: UIImage(named: post.image) ?? UIImage(), filter: .chrome) { completion in
+            if completion != nil {
+                postImageFilt = completion ?? UIImage()
+            }
+        }
+        
+        postImage.image = postImageFilt
         likesLabel.text = "Likes: " + String(post.likes)
         viewsLabel.text = "Views: " + String(post.views)
         print("")

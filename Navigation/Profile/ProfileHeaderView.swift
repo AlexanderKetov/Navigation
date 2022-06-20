@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 struct Post {
     var author: String
@@ -25,14 +26,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     let statusLabel     = UILabel()
     let statusTextField = UITextField()
     let nameButton      = UIButton()
-    
-    
-//    override func layoutSubviews () {
-//        super.layoutSubviews()
-//    }
-//
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -46,15 +40,15 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         profileImage.clipsToBounds = true
         profileImage.layer.borderWidth = 3
         profileImage.layer.borderColor = UIColor.white.cgColor
+        
         contentView.addSubview(profileImage)
         //autoLayout
-        profileImage.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            profileImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),       //Top
-            profileImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),       //Left
-            profileImage.heightAnchor.constraint(equalToConstant: 160), //Height
-            profileImage.widthAnchor.constraint(equalToConstant: 160),   //Width
-        ])
+        profileImage.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView).offset(16)
+            make.leading.equalTo(contentView).offset(16)
+            make.width.equalTo(160)
+            make.height.equalTo(160)
+        }
 
         //Name Label
         nameLabel.text = "Hipster Cat"
@@ -62,14 +56,13 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         nameLabel.textColor = .black
         contentView.addSubview(nameLabel)
         //autoLayout
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 27),       //Top
-            nameLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),       //Left
-            nameLabel.heightAnchor.constraint(equalToConstant: 20), //Height
-            nameLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
-        ])
-
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.layoutMarginsGuide).offset(27)
+            make.left.equalTo(profileImage.snp_rightMargin).offset(16)
+            make.width.equalTo(160)
+            make.height.equalTo(20)
+        }
+        
         //Status Button
         statusButton.backgroundColor = .systemBlue
         statusButton.setTitle("Show status", for: .normal)
@@ -82,13 +75,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         statusButton.layer.shadowOpacity = 0.7;
         contentView.addSubview(statusButton)
         //autoLayout
-        statusButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            statusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),       //Top
-            statusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),       //Left
-            statusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16), //Right
-            statusButton.heightAnchor.constraint(equalToConstant: 50), //Height
-        ])
+        statusButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(profileImage.snp_bottomMargin).offset(16)
+            make.leading.equalTo(contentView.snp_leadingMargin).offset(16)
+            make.trailing.equalTo(contentView.snp_trailingMargin).offset(16)
+            make.height.equalTo(50)
+        }
 
         //Status Label
         statusLabel.text = "Waiting for something..."
@@ -96,13 +88,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         statusLabel.textColor = .gray
         contentView.addSubview(statusLabel)
         //autoLayout
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            statusLabel.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -54),       //Top
-            statusLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),       //Left
-            statusLabel.heightAnchor.constraint(equalToConstant: 20), //Height
-            statusLabel.widthAnchor.constraint(equalToConstant: 160)   //Width
-        ])
+        statusLabel.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(statusButton.snp_topMargin).offset(-64)
+            make.left.equalTo(profileImage.snp_rightMargin).offset(16)
+            make.height.equalTo(20)
+            make.width.equalTo(160)
+        }
 
         //Status Text Field
         statusTextField.text = "Insert your status"
@@ -116,13 +107,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         contentView.addSubview(statusTextField)
         //autoLayout
-        statusTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),       //Top
-            statusTextField.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),       //Left
-            statusTextField.heightAnchor.constraint(equalToConstant: 40), //Height
-            statusTextField.widthAnchor.constraint(equalToConstant: 160)   //Width
-        ])
+        statusTextField.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(statusButton.snp_topMargin).offset(-15)
+            make.left.equalTo(profileImage.snp_rightMargin).offset(16)
+            make.height.equalTo(40)
+            make.width.equalTo(160)
+        }
     }
     
     required init?(coder: NSCoder) {
