@@ -18,6 +18,9 @@ struct Post {
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
+    var userService: UserService?
+    private var userData = User()
+    
     private var statusText: String = ""
     
     let profileImage    = UIImageView()
@@ -49,7 +52,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             make.width.equalTo(160)
             make.height.equalTo(160)
         }
-
+        
         //Name Label
         nameLabel.text = "Hipster Cat"
         nameLabel.font = .systemFont(ofSize: 18, weight: .bold)
@@ -117,6 +120,14 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func reloadUserData (userServiceIn: UserService?, userName: String?) {
+        userData = userServiceIn?.userInit(userName: userName ?? "") ?? User()
+        nameLabel.text = userData.name
+        profileImage.image = UIImage(named: userData.image)
+        statusTextField.text = userData.status
+        print("Reload")
     }
     
     @objc func buttonPressed () {

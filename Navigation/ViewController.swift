@@ -14,7 +14,11 @@ protocol MyDataSendingDelegateProtocol {
 }
 
 protocol LogInViewDelegateProtocol {
-    func sendDataToNavigationController()
+    func sendDataToNavigationController(userNameFromLogin: String)
+}
+
+protocol TabBarViewDelegateProtocol {
+    func sendDataToNavigationController(userNameFromLogin: String)
 }
 
 struct PostData {
@@ -188,17 +192,26 @@ class FeedViewNavigationController: UINavigationController, MyDataSendingDelegat
 
 
 class ProfileNavigationController: UINavigationController {
+    
+    let controllerOne = ProfileTableHederViewController()   //Заменил чтоб появилась таблица с постами
+    
+    private var userName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.tabBarItem.title = "Profile"
         
-        let controllerOne = ProfileTableHederViewController()   //Заменил чтоб появилась таблица с постами
-        
         self.viewControllers = [controllerOne]
         self.popToRootViewController(animated: true)
         
     }
+    
+    func reloaduserName (userName: String) {
+        self.userName = userName
+        controllerOne.reloaduserName (userName: userName)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -206,8 +219,18 @@ class ProfileNavigationController: UINavigationController {
 }
 
 
-class TabBar: UITabBarController {
+class TabBar: UITabBarController, TabBarViewDelegateProtocol {
     
+    private var userLogin: String = ""
+    
+    let tabOne = FeedViewNavigationController()
+    let tabTwo = ProfileNavigationController()
+    let tabThree = LogInViewController()
+    
+    func sendDataToNavigationController(userNameFromLogin: String) {  //функция обработчик делегата
+        userLogin = userNameFromLogin
+        tabTwo.reloaduserName(userName: userLogin)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -221,19 +244,17 @@ class TabBar: UITabBarController {
         super.viewWillAppear(animated)
         
         // Create Tab RandomPhoto
-        let tabOne = FeedViewNavigationController()
         let tabOneBarItem = UITabBarItem(title: "Feed View", image: UIImage (systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
         
         tabOne.tabBarItem = tabOneBarItem
         
         // Create Tab Favorite
-        let tabTwo = ProfileNavigationController()
         let tabTwoBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
         tabTwo.tabBarItem = tabTwoBarItem
         
         // Create Tab LogIn
-        let tabThree = LogInViewController()
+        tabThree.delegate = self
         let tabThreeBarItem = UITabBarItem(title: "Login", image: nil, selectedImage: nil)
         
         tabThree.tabBarItem = tabThreeBarItem

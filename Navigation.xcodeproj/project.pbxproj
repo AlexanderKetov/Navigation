@@ -16,6 +16,22 @@
 		551E46632857915B001602F3 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551E464D2857915B001602F3 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55A47C0028600B070065C362 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 55A47BFF28600B070065C362 /* iOSIntPackage */; };
 		55A47C0228600B1D0065C362 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 55A47C0128600B1D0065C362 /* iOSIntPackage */; };
+		55A47C03286024140065C362 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B61C27D4BD100028E14C /* AppDelegate.swift */; };
+		55A47C04286024410065C362 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B61E27D4BD100028E14C /* SceneDelegate.swift */; };
+		55A47C05286024440065C362 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B62027D4BD100028E14C /* ViewController.swift */; };
+		55A47C06286024610065C362 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
+		55A47C07286024640065C362 /* ProfileHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D428144A77009FD412 /* ProfileHeaderTableView.swift */; };
+		55A47C08286024660065C362 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */; };
+		55A47C09286024680065C362 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9576027EBDE430057CAD9 /* LogInViewController.swift */; };
+		55A47C0A2860246B0065C362 /* LogInViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9576227EBEBD10057CAD9 /* LogInViewView.swift */; };
+		55A47C0B286024700065C362 /* ProfileTableHederViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792CE280C24FA009FD412 /* ProfileTableHederViewController.swift */; };
+		55A47C0C286024780065C362 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D2280E3F69009FD412 /* PostTableViewCell.swift */; };
+		55A47C0F28606F7C0065C362 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C0E28606F7C0065C362 /* User.swift */; };
+		55A47C11286071DC0065C362 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C10286071DC0065C362 /* CurrentUserService.swift */; };
+		55A47C12286154EC0065C362 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C10286071DC0065C362 /* CurrentUserService.swift */; };
+		55A47C13286154EF0065C362 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C0E28606F7C0065C362 /* User.swift */; };
+		55A47C1528623EE40065C362 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1428623EE40065C362 /* TestUserService.swift */; };
+		55A47C1628623FA80065C362 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1428623EE40065C362 /* TestUserService.swift */; };
 		55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
 		55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D428144A77009FD412 /* ProfileHeaderTableView.swift */; };
 		55C8BF48285B7C6F0050F6F4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */; };
@@ -27,19 +43,9 @@
 		55C8BF4E285B7C840050F6F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B62027D4BD100028E14C /* ViewController.swift */; };
 		55C8BF4F285B7C910050F6F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5544B62527D4BD150028E14C /* Assets.xcassets */; };
 		55C8BF50285B7C950050F6F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5544B62727D4BD150028E14C /* LaunchScreen.storyboard */; };
-		55CABE51285E0068009CC235 /* ProfileHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D428144A77009FD412 /* ProfileHeaderTableView.swift */; };
-		55CABE52285E006B009CC235 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */; };
-		55CABE53285E006E009CC235 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9576027EBDE430057CAD9 /* LogInViewController.swift */; };
-		55CABE54285E0071009CC235 /* LogInViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9576227EBEBD10057CAD9 /* LogInViewView.swift */; };
-		55CABE55285E0074009CC235 /* ProfileTableHederViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792CE280C24FA009FD412 /* ProfileTableHederViewController.swift */; };
-		55CABE56285E0077009CC235 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D2280E3F69009FD412 /* PostTableViewCell.swift */; };
-		55CABE57285E007A009CC235 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B61E27D4BD100028E14C /* SceneDelegate.swift */; };
-		55CABE58285E007C009CC235 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B62027D4BD100028E14C /* ViewController.swift */; };
 		55CABE59285E007F009CC235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5544B62527D4BD150028E14C /* Assets.xcassets */; };
 		55CABE5A285E0083009CC235 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5544B62727D4BD150028E14C /* LaunchScreen.storyboard */; };
-		55CABE5B285E010B009CC235 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
 		55CABE5C285E015B009CC235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B61C27D4BD100028E14C /* AppDelegate.swift */; };
-		55CABE5D285E017E009CC235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B61C27D4BD100028E14C /* AppDelegate.swift */; };
 		5A316561728828E55E0DB3CC /* Pods_StorageService_StorageServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606ED19C57444063E16EAB0A /* Pods_StorageService_StorageServiceTests.framework */; };
 		DF3C69487B3D7602ED9CC8AE /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3C1BB3D4A6A6184BC1CE98 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +109,9 @@
 		554792D2280E3F69009FD412 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		554792D428144A77009FD412 /* ProfileHeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTableView.swift; sourceTree = "<group>"; };
 		55A47BFE286005E50065C362 /* iOSIntPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = iOSIntPackage; sourceTree = "<group>"; };
+		55A47C0E28606F7C0065C362 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		55A47C10286071DC0065C362 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
+		55A47C1428623EE40065C362 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 		55B9576027EBDE430057CAD9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		55B9576227EBEBD10057CAD9 /* LogInViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewView.swift; sourceTree = "<group>"; };
 		58626DD7312F2B6D766E22F5 /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				5544B61C27D4BD100028E14C /* AppDelegate.swift */,
+				55A47C0D28606EC40065C362 /* User */,
 				5535A5B927DC51B100AAF6BB /* Profile */,
 				5544B61E27D4BD100028E14C /* SceneDelegate.swift */,
 				5544B62027D4BD100028E14C /* ViewController.swift */,
@@ -220,6 +230,16 @@
 				55A47BFE286005E50065C362 /* iOSIntPackage */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		55A47C0D28606EC40065C362 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				55A47C0E28606F7C0065C362 /* User.swift */,
+				55A47C10286071DC0065C362 /* CurrentUserService.swift */,
+				55A47C1428623EE40065C362 /* TestUserService.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		88EABB949B425D150F2C66AE /* Pods */ = {
@@ -504,6 +524,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A47C1628623FA80065C362 /* TestUserService.swift in Sources */,
+				55A47C13286154EF0065C362 /* User.swift in Sources */,
 				55CABE5C285E015B009CC235 /* AppDelegate.swift in Sources */,
 				55C8BF4B285B7C790050F6F4 /* ProfileTableHederViewController.swift in Sources */,
 				55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */,
@@ -514,6 +536,7 @@
 				55C8BF48285B7C6F0050F6F4 /* ProfileViewController.swift in Sources */,
 				55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */,
 				551E46512857915B001602F3 /* StorageService.docc in Sources */,
+				55A47C12286154EC0065C362 /* CurrentUserService.swift in Sources */,
 				55C8BF4C285B7C7D0050F6F4 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,16 +553,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55CABE58285E007C009CC235 /* ViewController.swift in Sources */,
-				55CABE55285E0074009CC235 /* ProfileTableHederViewController.swift in Sources */,
-				55CABE51285E0068009CC235 /* ProfileHeaderTableView.swift in Sources */,
-				55CABE57285E007A009CC235 /* SceneDelegate.swift in Sources */,
-				55CABE5B285E010B009CC235 /* ProfileHeaderView.swift in Sources */,
-				55CABE56285E0077009CC235 /* PostTableViewCell.swift in Sources */,
-				55CABE52285E006B009CC235 /* ProfileViewController.swift in Sources */,
-				55CABE53285E006E009CC235 /* LogInViewController.swift in Sources */,
-				55CABE5D285E017E009CC235 /* AppDelegate.swift in Sources */,
-				55CABE54285E0071009CC235 /* LogInViewView.swift in Sources */,
+				55A47C1528623EE40065C362 /* TestUserService.swift in Sources */,
+				55A47C08286024660065C362 /* ProfileViewController.swift in Sources */,
+				55A47C05286024440065C362 /* ViewController.swift in Sources */,
+				55A47C03286024140065C362 /* AppDelegate.swift in Sources */,
+				55A47C0B286024700065C362 /* ProfileTableHederViewController.swift in Sources */,
+				55A47C09286024680065C362 /* LogInViewController.swift in Sources */,
+				55A47C04286024410065C362 /* SceneDelegate.swift in Sources */,
+				55A47C0A2860246B0065C362 /* LogInViewView.swift in Sources */,
+				55A47C0C286024780065C362 /* PostTableViewCell.swift in Sources */,
+				55A47C06286024610065C362 /* ProfileHeaderView.swift in Sources */,
+				55A47C07286024640065C362 /* ProfileHeaderTableView.swift in Sources */,
+				55A47C11286071DC0065C362 /* CurrentUserService.swift in Sources */,
+				55A47C0F28606F7C0065C362 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

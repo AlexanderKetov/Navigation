@@ -9,7 +9,20 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+//    var userService: UserService
+//    private var userName: String?
+    
     var profileHeader = ProfileHeaderView()
+    
+//    init(userServiceIn: UserService, userNameIn: String?) {
+//        userService = userServiceIn
+//        userName = userNameIn ?? ""
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

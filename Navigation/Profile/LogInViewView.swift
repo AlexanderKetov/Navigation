@@ -11,7 +11,7 @@ class LogInView: UIView {
     
     var delegate: LogInViewDelegateProtocol? = nil //объявляем делегата
     
-    let profileViewController = ProfileViewController()
+    //let profileViewController = ProfileViewController()
     
     let logoImage: UIImageView = {
         let image = UIImageView()
@@ -133,12 +133,11 @@ class LogInView: UIView {
             loginButton.heightAnchor.constraint(equalToConstant: 50), //Height
             //loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16), //Right
         ])
-        
     }
     
     @objc func buttonLoginPressed (sender: UIButton!) {
         if self.delegate != nil {
-            self.delegate?.sendDataToNavigationController() // вызываем функцию делегата
+            self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "") // вызываем функцию делегата
             print("send delegate")
         }
        

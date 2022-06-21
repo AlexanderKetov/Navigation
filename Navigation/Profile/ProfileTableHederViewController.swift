@@ -65,6 +65,12 @@ class ProfileTableHederViewController: UIViewController {
         return tableView
     }()
     
+    let userServiceOut = CurrentUserService()
+    let userServiceOutTest = TestUserService()
+    private var userName: String = ""
+    
+    let headView = ProfileHeaderView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,8 +78,6 @@ class ProfileTableHederViewController: UIViewController {
         
         self.view.addSubview(postScrollView)
         postScrollView.addSubview(tablePost)
-        
-        let headView = ProfileHeaderView()
         
         tablePost.tableHeaderView = headView
         
@@ -100,7 +104,17 @@ class ProfileTableHederViewController: UIViewController {
         ])
         
     }
-
+    
+    func reloaduserName (userName: String) {
+        self.userName = userName
+        //передаем логин
+        #if DEBUG
+        headView.reloadUserData(userServiceIn: userServiceOutTest, userName: userName)
+        #else
+        headView.reloadUserData(userServiceIn: userServiceOut, userName: userName)
+        #endif
+        
+    }
 }
 
 extension ProfileTableHederViewController: UITableViewDataSource {
