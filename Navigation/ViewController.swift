@@ -14,7 +14,7 @@ protocol MyDataSendingDelegateProtocol {
 }
 
 protocol LogInViewDelegateProtocol {
-    func sendDataToNavigationController(userNameFromLogin: String)
+    func sendDataToNavigationController(userNameFromLogin: String, userPassword: String) -> Bool
 }
 
 protocol TabBarViewDelegateProtocol {

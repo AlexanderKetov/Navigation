@@ -137,10 +137,9 @@ class LogInView: UIView {
     
     @objc func buttonLoginPressed (sender: UIButton!) {
         if self.delegate != nil {
-            self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "") // вызываем функцию делегата
-            print("send delegate")
+            var check: Bool = false
+            check = ((self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "", userPassword: passwordTextField.text ?? "")) != nil) // вызываем функцию делегата
+            print("send delegate \(check)")
         }
-       
     }
-    
 }

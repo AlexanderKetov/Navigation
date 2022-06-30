@@ -16,14 +16,25 @@ class LogInViewController: UIViewController, LogInViewDelegateProtocol {
     var loginScrollView = UIScrollView()
     var logInView = LogInView()
     
-    func sendDataToNavigationController(userNameFromLogin: String) {  //функция обработчик делегата
-        self.tabBarController?.selectedIndex = 1 //переключаемся на ProfileViewController
-        self.tabBarController?.tabBar.isHidden = false //показываем таббар
-        self.tabBarController?.viewControllers?.remove(at: 2) //удаляем вкладку с логином
+    let factoryLoginInspector = FactoryLoginInspector() // создаём фабрику
+    
+    func sendDataToNavigationController(userNameFromLogin: String, userPassword: String) -> Bool {  //функция обработчик делегата
+        var check: Bool = false
         if self.delegate != nil {
             self.delegate?.sendDataToNavigationController(userNameFromLogin: userNameFromLogin) // вызываем функцию делегата
             print("send delegate to ViewController")
         }
+        
+        let loginInspector = factoryLoginInspector.createLoginInspector()
+        
+        check = loginInspector.loginCheck(userNameFromLogin: userNameFromLogin, userPassword: userPassword)
+        if (check) { //Данные валидные
+            self.tabBarController?.selectedIndex = 1 //переключаемся на ProfileViewController
+            self.tabBarController?.tabBar.isHidden = false //показываем таббар
+            self.tabBarController?.viewControllers?.remove(at: 2) //удаляем вкладку с логином
+        }
+        
+        return check
     }
     
     override func viewDidLoad() {

@@ -32,6 +32,12 @@
 		55A47C13286154EF0065C362 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C0E28606F7C0065C362 /* User.swift */; };
 		55A47C1528623EE40065C362 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1428623EE40065C362 /* TestUserService.swift */; };
 		55A47C1628623FA80065C362 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1428623EE40065C362 /* TestUserService.swift */; };
+		55A47C19286BD2450065C362 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C18286BD2450065C362 /* Checker.swift */; };
+		55A47C1B286C8D3F0065C362 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1A286C8D3F0065C362 /* LoginInspector.swift */; };
+		55A47C1C286C95320065C362 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1A286C8D3F0065C362 /* LoginInspector.swift */; };
+		55A47C1D286C954D0065C362 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C18286BD2450065C362 /* Checker.swift */; };
+		55A47C20286D2DCD0065C362 /* FactoryLoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */; };
+		55A47C21286D309F0065C362 /* FactoryLoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */; };
 		55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
 		55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D428144A77009FD412 /* ProfileHeaderTableView.swift */; };
 		55C8BF48285B7C6F0050F6F4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */; };
@@ -112,6 +118,9 @@
 		55A47C0E28606F7C0065C362 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		55A47C10286071DC0065C362 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		55A47C1428623EE40065C362 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
+		55A47C18286BD2450065C362 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		55A47C1A286C8D3F0065C362 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryLoginInspector.swift; sourceTree = "<group>"; };
 		55B9576027EBDE430057CAD9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		55B9576227EBEBD10057CAD9 /* LogInViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewView.swift; sourceTree = "<group>"; };
 		58626DD7312F2B6D766E22F5 /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +184,7 @@
 		5535A5B927DC51B100AAF6BB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				55A47C1A286C8D3F0065C362 /* LoginInspector.swift */,
 				5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */,
 				554792D428144A77009FD412 /* ProfileHeaderTableView.swift */,
 				5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */,
@@ -213,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				5544B61C27D4BD100028E14C /* AppDelegate.swift */,
+				55A47C1E286D2DA20065C362 /* Factories */,
+				55A47C17286BD2290065C362 /* Singleton */,
 				55A47C0D28606EC40065C362 /* User */,
 				5535A5B927DC51B100AAF6BB /* Profile */,
 				5544B61E27D4BD100028E14C /* SceneDelegate.swift */,
@@ -240,6 +252,22 @@
 				55A47C1428623EE40065C362 /* TestUserService.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		55A47C17286BD2290065C362 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				55A47C18286BD2450065C362 /* Checker.swift */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		55A47C1E286D2DA20065C362 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		88EABB949B425D150F2C66AE /* Pods */ = {
@@ -525,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55A47C1628623FA80065C362 /* TestUserService.swift in Sources */,
+				55A47C21286D309F0065C362 /* FactoryLoginInspector.swift in Sources */,
 				55A47C13286154EF0065C362 /* User.swift in Sources */,
 				55CABE5C285E015B009CC235 /* AppDelegate.swift in Sources */,
 				55C8BF4B285B7C790050F6F4 /* ProfileTableHederViewController.swift in Sources */,
@@ -536,6 +565,8 @@
 				55C8BF48285B7C6F0050F6F4 /* ProfileViewController.swift in Sources */,
 				55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */,
 				551E46512857915B001602F3 /* StorageService.docc in Sources */,
+				55A47C1C286C95320065C362 /* LoginInspector.swift in Sources */,
+				55A47C1D286C954D0065C362 /* Checker.swift in Sources */,
 				55A47C12286154EC0065C362 /* CurrentUserService.swift in Sources */,
 				55C8BF4C285B7C7D0050F6F4 /* PostTableViewCell.swift in Sources */,
 			);
@@ -558,13 +589,16 @@
 				55A47C05286024440065C362 /* ViewController.swift in Sources */,
 				55A47C03286024140065C362 /* AppDelegate.swift in Sources */,
 				55A47C0B286024700065C362 /* ProfileTableHederViewController.swift in Sources */,
+				55A47C19286BD2450065C362 /* Checker.swift in Sources */,
 				55A47C09286024680065C362 /* LogInViewController.swift in Sources */,
 				55A47C04286024410065C362 /* SceneDelegate.swift in Sources */,
 				55A47C0A2860246B0065C362 /* LogInViewView.swift in Sources */,
 				55A47C0C286024780065C362 /* PostTableViewCell.swift in Sources */,
 				55A47C06286024610065C362 /* ProfileHeaderView.swift in Sources */,
 				55A47C07286024640065C362 /* ProfileHeaderTableView.swift in Sources */,
+				55A47C1B286C8D3F0065C362 /* LoginInspector.swift in Sources */,
 				55A47C11286071DC0065C362 /* CurrentUserService.swift in Sources */,
+				55A47C20286D2DCD0065C362 /* FactoryLoginInspector.swift in Sources */,
 				55A47C0F28606F7C0065C362 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

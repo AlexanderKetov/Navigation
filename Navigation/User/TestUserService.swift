@@ -9,7 +9,7 @@ import Foundation
 
 class TestUserService: UserService {
     
-    let currentUserData: User = User(image: "ProfileCat.jpg", name: "Hipster Cat", status: "Load status")
+    let currentUserData: User = User(image: "ProfileCat.jpg", name: "Vasily", status: "Load status")
     
     func userInit(userName: String) -> User {
         print("LinkUser")
