@@ -10,29 +10,76 @@ import UIKit
 //-----------NewsFeed-------------
 
 protocol MyDataSendingDelegateProtocol {
-    func sendDataToNavigationController(_ : Post)
+    func sendDataToNavigationController(_ : PostData)
 }
 
-struct Post {
+protocol LogInViewDelegateProtocol {
+    func sendDataToNavigationController(userNameFromLogin: String, userPassword: String) -> Bool
+}
+
+protocol TabBarViewDelegateProtocol {
+    func sendDataToNavigationController(userNameFromLogin: String)
+}
+
+struct PostData {
     var title: String
 }
 
 class FeedViewController: UIViewController {
     
     var delegate: MyDataSendingDelegateProtocol? = nil //объявляем делегата
-    var data = Post(title: "Test string")
+    var data = PostData(title: "Test string")
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    let buttonOne: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .green
+        button.setTitle("View Post", for: .normal)
+        button.addTarget(self, action: #selector(ButtonPress), for: .touchUpInside)
+        return button
+    }()
+    
+    let buttonTwo: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .green
+        button.setTitle("View Post 2", for: .normal)
+        button.addTarget(self, action: #selector(ButtonPress), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.title = "Feed View"
         
+        self.view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+        ])
+        
+        stackView.addArrangedSubview(buttonOne)
+        stackView.addArrangedSubview(buttonTwo)
+        
+        
+        /*
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         button.backgroundColor = .green
         button.setTitle("View Post", for: .normal)
         button.addTarget(self, action: #selector(ButtonPress), for: .touchUpInside)
 
         self.view.addSubview(button)
+         */
         
     }
     
@@ -93,7 +140,7 @@ class InfoViewController: UIViewController {
 
 class PostViewController: UIViewController {
     
-    var data = Post(title: "Post View")
+    var data = PostData(title: "Post View")
     let InfoView = InfoViewController()
     
     override func viewDidLoad() {
@@ -116,9 +163,10 @@ class FeedViewNavigationController: UINavigationController, MyDataSendingDelegat
     let controllerOne = FeedViewController()
     let controllerTwo = PostViewController()
 
-    func sendDataToNavigationController(_ data: Post) {  //функция обработчик делегата
+    func sendDataToNavigationController(_ data: PostData) {  //функция обработчик делегата
         controllerTwo.data = data
         self.pushViewController(controllerTwo, animated: true)
+        print("delegate")
     }
     
     override func viewDidLoad() {
@@ -140,28 +188,30 @@ class FeedViewNavigationController: UINavigationController, MyDataSendingDelegat
     }
 }
 
-//-----------NewsFeed-------------
+//-----------Profile-------------
 
-class ProfileController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.title = "Profile"
-    }
-}
 
 class ProfileNavigationController: UINavigationController {
+    
+    let controllerOne = ProfileTableHederViewController()   //Заменил чтоб появилась таблица с постами
+    
+    private var userName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.tabBarItem.title = "Profile"
         
-        let controllerOne = ProfileController()
-        
         self.viewControllers = [controllerOne]
         self.popToRootViewController(animated: true)
         
     }
+    
+    func reloaduserName (userName: String) {
+        self.userName = userName
+        controllerOne.reloaduserName (userName: userName)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -169,7 +219,19 @@ class ProfileNavigationController: UINavigationController {
 }
 
 
-class TabBar: UITabBarController {
+class TabBar: UITabBarController, TabBarViewDelegateProtocol {
+    
+    private var userLogin: String = ""
+    
+    let tabOne = FeedViewNavigationController()
+    let tabTwo = ProfileNavigationController()
+    let tabThree = LogInViewController()
+    
+    func sendDataToNavigationController(userNameFromLogin: String) {  //функция обработчик делегата
+        userLogin = userNameFromLogin
+        tabTwo.reloaduserName(userName: userLogin)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -182,24 +244,23 @@ class TabBar: UITabBarController {
         super.viewWillAppear(animated)
         
         // Create Tab RandomPhoto
-        let tabOne = FeedViewNavigationController()
         let tabOneBarItem = UITabBarItem(title: "Feed View", image: UIImage (systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
         
         tabOne.tabBarItem = tabOneBarItem
         
-        
         // Create Tab Favorite
-        let tabTwo = ProfileNavigationController()
-        let tabTwoBarItem2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        let tabTwoBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
-        tabTwo.tabBarItem = tabTwoBarItem2
+        tabTwo.tabBarItem = tabTwoBarItem
         
-        self.viewControllers = [tabOne, tabTwo]
-
+        // Create Tab LogIn
+        tabThree.delegate = self
+        let tabThreeBarItem = UITabBarItem(title: "Login", image: nil, selectedImage: nil)
         
-        // Create Tab NewsFeed
+        tabThree.tabBarItem = tabThreeBarItem
         
-        // Create Tab Profile
-
+        self.viewControllers = [tabOne, tabTwo, tabThree]
+        self.selectedIndex = 2
+        
     }
 }
