@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 struct PostS {
     var author: String
@@ -16,6 +17,10 @@ struct PostS {
 }
 
 class ProfileTableHederViewController: UIViewController {
+    
+    let imagePublisher = ImagePublisherFacade()
+    
+    var countTest:Int = 0
     
     let postsHabr: [PostS] = {
         var post1 = PostS(
@@ -74,6 +79,10 @@ class ProfileTableHederViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePublisher.subscribe(self)
+        imagePublisher.addImagesWithTimer(time: 2, repeat: 4, userImages: [UIImage(named: "1.jpg") ?? UIImage(), UIImage(named: "2.jpg") ?? UIImage(), UIImage(named: "3.jpg") ?? UIImage(), UIImage(named: "4.jpg") ?? UIImage()])
+        
+        
         self.view.backgroundColor = .green
         
         self.view.addSubview(postScrollView)
@@ -119,7 +128,7 @@ class ProfileTableHederViewController: UIViewController {
 
 extension ProfileTableHederViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cnt = postsHabr.count
+        let cnt = self.countTest //postsHabr.count
         
         return cnt
     }
@@ -130,14 +139,16 @@ extension ProfileTableHederViewController: UITableViewDataSource {
         cell.cellContentSetup(post: postsHabr[indexPath.row])
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileHeaderView.self)) as! ProfileHeaderView
-//        return headerView
-//    }
-    
 }
 
 extension ProfileTableHederViewController: UITableViewDelegate {
     
+}
+
+extension ProfileTableHederViewController: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        self.countTest = images.count
+        tablePost.reloadData()
+        print(countTest)
+    }
 }

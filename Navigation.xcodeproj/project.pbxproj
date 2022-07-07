@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E291CBD99B37C9034E5C84A /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58626DD7312F2B6D766E22F5 /* Pods_StorageService.framework */; };
 		551E46512857915B001602F3 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 551E46502857915B001602F3 /* StorageService.docc */; };
 		551E46572857915B001602F3 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551E464D2857915B001602F3 /* StorageService.framework */; };
 		551E465E2857915B001602F3 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E465D2857915B001602F3 /* StorageServiceTests.swift */; };
@@ -38,6 +37,8 @@
 		55A47C1D286C954D0065C362 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C18286BD2450065C362 /* Checker.swift */; };
 		55A47C20286D2DCD0065C362 /* FactoryLoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */; };
 		55A47C21286D309F0065C362 /* FactoryLoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */; };
+		55A47C252875FA290065C362 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		55A47C272875FB400065C362 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551E464D2857915B001602F3 /* StorageService.framework */; platformFilter = ios; };
 		55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
 		55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D428144A77009FD412 /* ProfileHeaderTableView.swift */; };
 		55C8BF48285B7C6F0050F6F4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */; };
@@ -53,6 +54,7 @@
 		55CABE5A285E0083009CC235 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5544B62727D4BD150028E14C /* LaunchScreen.storyboard */; };
 		55CABE5C285E015B009CC235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544B61C27D4BD100028E14C /* AppDelegate.swift */; };
 		5A316561728828E55E0DB3CC /* Pods_StorageService_StorageServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606ED19C57444063E16EAB0A /* Pods_StorageService_StorageServiceTests.framework */; };
+		7B12F289032ADDF6D8503D8F /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB2AEFC7E78947EDD12EE5 /* Pods_StorageService.framework */; };
 		DF3C69487B3D7602ED9CC8AE /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3C1BB3D4A6A6184BC1CE98 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,11 +125,11 @@
 		55A47C1F286D2DCD0065C362 /* FactoryLoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryLoginInspector.swift; sourceTree = "<group>"; };
 		55B9576027EBDE430057CAD9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		55B9576227EBEBD10057CAD9 /* LogInViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewView.swift; sourceTree = "<group>"; };
-		58626DD7312F2B6D766E22F5 /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		606ED19C57444063E16EAB0A /* Pods_StorageService_StorageServiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService_StorageServiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DED123BC7A092C7CDF7CB2 /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		72B6140285559AEE1F5E018A /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
 		B0491FE5E6341C7D83EB66A3 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
+		B7FB2AEFC7E78947EDD12EE5 /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84A90F48E79D5617DA4D5A2 /* Pods-StorageService-StorageServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService-StorageServiceTests.release.xcconfig"; path = "Target Support Files/Pods-StorageService-StorageServiceTests/Pods-StorageService-StorageServiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		E84C8E30311FE75199E005E3 /* Pods-StorageService-StorageServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService-StorageServiceTests.debug.xcconfig"; path = "Target Support Files/Pods-StorageService-StorageServiceTests/Pods-StorageService-StorageServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,8 +139,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E291CBD99B37C9034E5C84A /* Pods_StorageService.framework in Frameworks */,
+				55A47C252875FA290065C362 /* (null) in Frameworks */,
 				55A47C0228600B1D0065C362 /* iOSIntPackage in Frameworks */,
+				55A47C272875FB400065C362 /* StorageService.framework in Frameworks */,
+				7B12F289032ADDF6D8503D8F /* Pods_StorageService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,8 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				2E3C1BB3D4A6A6184BC1CE98 /* Pods_Navigation.framework */,
-				58626DD7312F2B6D766E22F5 /* Pods_StorageService.framework */,
 				606ED19C57444063E16EAB0A /* Pods_StorageService_StorageServiceTests.framework */,
+				B7FB2AEFC7E78947EDD12EE5 /* Pods_StorageService.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
