@@ -52,38 +52,30 @@ class LogInView: UIView {
         return textField
     }()
     
-    let loginButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemYellow
-        let imageBack = UIImage(named: "blue_pixel.png")
-        //imageBack?.draw(at: .zero, blendMode: nil, alpha: 1.0)    //Не получилось задать разную Alpha, подскажите как правильно сделать
-        button.setBackgroundImage(imageBack, for: UIControl.State.normal)
-        //imageBack?.draw(at: .zero, blendMode: .normal, alpha: 0.8)
-        button.setBackgroundImage(imageBack, for: UIControl.State.highlighted)
-        button.setBackgroundImage(imageBack, for: UIControl.State.selected)
-        button.setBackgroundImage(imageBack, for: UIControl.State.disabled)
-        
-        button.setTitle("Log In", for: .normal)
-        button.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
-        button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(buttonLoginPressed), for: .touchUpInside)
-        //Status Button Shadow
-        button.layer.shadowRadius = 4;
-        button.layer.shadowColor = UIColor.white.cgColor;
-        button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
-        button.layer.shadowOpacity = 0.7;
-        return button
-    }()
-    /*
-    let nameLabel       = UILabel()
-    let statusButton    = UIButton()
-    let statusLabel     = UILabel()
-    let nameButton      = UIButton()
-    */
+    lazy var loginCustomButton = CustomButton(title: "Log In", titleColor: .black, delegateIn: self)
     
-    //override func layoutSubviews () {
-    //    super.layoutSubviews()
-    //}
+//    let loginButton: UIButton = {
+//        let button = UIButton()
+//        button.backgroundColor = .systemYellow
+//        let imageBack = UIImage(named: "blue_pixel.png")
+//        //imageBack?.draw(at: .zero, blendMode: nil, alpha: 1.0)    //Не получилось задать разную Alpha, подскажите как правильно сделать
+//        button.setBackgroundImage(imageBack, for: UIControl.State.normal)
+//        //imageBack?.draw(at: .zero, blendMode: .normal, alpha: 0.8)
+//        button.setBackgroundImage(imageBack, for: UIControl.State.highlighted)
+//        button.setBackgroundImage(imageBack, for: UIControl.State.selected)
+//        button.setBackgroundImage(imageBack, for: UIControl.State.disabled)
+//
+//        button.setTitle("Log In", for: .normal)
+//        button.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
+//        button.layer.masksToBounds = true
+//        button.addTarget(self, action: #selector(buttonLoginPressed), for: .touchUpInside)
+//        //Status Button Shadow
+//        button.layer.shadowRadius = 4;
+//        button.layer.shadowColor = UIColor.white.cgColor;
+//        button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
+//        button.layer.shadowOpacity = 0.7;
+//        return button
+//    }()
     
     override func draw (_ rect: CGRect) {
         super.draw(rect)
@@ -123,19 +115,46 @@ class LogInView: UIView {
         ])
         
         //name Button
-        self.addSubview(loginButton)
+        loginCustomButton.button.backgroundColor = .systemYellow
+        let imageBack = UIImage(named: "blue_pixel.png")
+        //imageBack?.draw(at: .zero, blendMode: nil, alpha: 1.0)    //Не получилось задать разную Alpha, подскажите как правильно сделать
+        loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.normal)
+        //imageBack?.draw(at: .zero, blendMode: .normal, alpha: 0.8)
+        loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.highlighted)
+        loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.selected)
+        loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.disabled)
+        
+        loginCustomButton.button.setTitle("Log In", for: .normal)
+        loginCustomButton.button.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
+        loginCustomButton.button.layer.masksToBounds = true
+        //Status Button Shadow
+        loginCustomButton.button.layer.shadowRadius = 4;
+        loginCustomButton.button.layer.shadowColor = UIColor.white.cgColor;
+        loginCustomButton.button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
+        loginCustomButton.button.layer.shadowOpacity = 0.7;
+        self.addSubview(loginCustomButton.button)
         //autoLayout
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginCustomButton.button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),       //Top
-            loginButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
-            loginButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
-            loginButton.heightAnchor.constraint(equalToConstant: 50), //Height
+            loginCustomButton.button.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),       //Top
+            loginCustomButton.button.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
+            loginCustomButton.button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
+            loginCustomButton.button.heightAnchor.constraint(equalToConstant: 50), //Height
             //loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16), //Right
         ])
     }
     
-    @objc func buttonLoginPressed (sender: UIButton!) {
+//    @objc func buttonLoginPressed (sender: UIButton!) {
+//        if self.delegate != nil {
+//            var check: Bool = false
+//            check = ((self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "", userPassword: passwordTextField.text ?? "")) != nil) // вызываем функцию делегата
+//            print("send delegate \(check)")
+//        }
+//    }
+}
+//MARK: -- delegate from LogIn button
+extension LogInView: CustomButtonProtocol {
+    func buttonTapped() {
         if self.delegate != nil {
             var check: Bool = false
             check = ((self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "", userPassword: passwordTextField.text ?? "")) != nil) // вызываем функцию делегата

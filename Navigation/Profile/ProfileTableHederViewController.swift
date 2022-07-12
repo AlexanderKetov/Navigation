@@ -80,8 +80,15 @@ class ProfileTableHederViewController: UIViewController {
         super.viewDidLoad()
         
         imagePublisher.subscribe(self)
-        imagePublisher.addImagesWithTimer(time: 2, repeat: 4, userImages: [UIImage(named: "1.jpg") ?? UIImage(), UIImage(named: "2.jpg") ?? UIImage(), UIImage(named: "3.jpg") ?? UIImage(), UIImage(named: "4.jpg") ?? UIImage()])
         
+        let postImages: [UIImage?] = [UIImage(named: "1.jpg"), UIImage(named: "2.jpg"), UIImage(named: "3.jpg"), UIImage(named: "4.jpg")]
+        
+        if postImages.isEmpty {
+            return
+        }
+        let postImagesUnwrap = postImages.compactMap { $0 }
+        
+        imagePublisher.addImagesWithTimer(time: 2, repeat: 4, userImages: postImagesUnwrap)
         
         self.view.backgroundColor = .green
         
