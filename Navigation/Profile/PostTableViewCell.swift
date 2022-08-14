@@ -148,10 +148,17 @@ class PostTableViewCell: UITableViewCell {
         postLabel.text = post.description
         
         var postImageFilt = UIImage()
-        imageProcessor.processImage(sourceImage: UIImage(named: post.image) ?? UIImage(), filter: .chrome) { completion in
-            if completion != nil {
-                postImageFilt = completion ?? UIImage()
+        
+        let _: () = DispatchQueue.global(qos: .userInteractive).sync {
+            let start = DispatchTime.now()
+            self.imageProcessor.processImage(sourceImage: UIImage(named: post.image) ?? UIImage(), filter: .chrome) { completion in
+                if completion != nil {
+                    postImageFilt = completion ?? UIImage()
+                }
             }
+            let end = DispatchTime.now()
+            print("Time is start " + String(start.uptimeNanoseconds))
+            print("Time is stop " + String(end.uptimeNanoseconds))
         }
         
         postImage.image = postImageFilt
