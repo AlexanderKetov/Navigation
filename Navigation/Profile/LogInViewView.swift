@@ -54,28 +54,15 @@ class LogInView: UIView {
     
     lazy var loginCustomButton = CustomButton(title: "Log In", titleColor: .black, delegateIn: self)
     
-//    let loginButton: UIButton = {
-//        let button = UIButton()
-//        button.backgroundColor = .systemYellow
-//        let imageBack = UIImage(named: "blue_pixel.png")
-//        //imageBack?.draw(at: .zero, blendMode: nil, alpha: 1.0)    //Не получилось задать разную Alpha, подскажите как правильно сделать
-//        button.setBackgroundImage(imageBack, for: UIControl.State.normal)
-//        //imageBack?.draw(at: .zero, blendMode: .normal, alpha: 0.8)
-//        button.setBackgroundImage(imageBack, for: UIControl.State.highlighted)
-//        button.setBackgroundImage(imageBack, for: UIControl.State.selected)
-//        button.setBackgroundImage(imageBack, for: UIControl.State.disabled)
-//
-//        button.setTitle("Log In", for: .normal)
-//        button.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
-//        button.layer.masksToBounds = true
-//        button.addTarget(self, action: #selector(buttonLoginPressed), for: .touchUpInside)
-//        //Status Button Shadow
-//        button.layer.shadowRadius = 4;
-//        button.layer.shadowColor = UIColor.white.cgColor;
-//        button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
-//        button.layer.shadowOpacity = 0.7;
-//        return button
-//    }()
+    let bruteForceButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .green
+        button.setTitle("bruteForce password", for: .normal)
+        button.addTarget(self, action: #selector(BruteForceButtonPress), for: .touchUpInside)
+        return button
+    }()
+    
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func draw (_ rect: CGRect) {
         super.draw(rect)
@@ -117,17 +104,14 @@ class LogInView: UIView {
         //name Button
         loginCustomButton.button.backgroundColor = .systemYellow
         let imageBack = UIImage(named: "blue_pixel.png")
-        //imageBack?.draw(at: .zero, blendMode: nil, alpha: 1.0)    //Не получилось задать разную Alpha, подскажите как правильно сделать
         loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.normal)
-        //imageBack?.draw(at: .zero, blendMode: .normal, alpha: 0.8)
         loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.highlighted)
         loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.selected)
         loginCustomButton.button.setBackgroundImage(imageBack, for: UIControl.State.disabled)
         
         loginCustomButton.button.setTitle("Log In", for: .normal)
-        loginCustomButton.button.layer.cornerRadius = 14 // 4px совсем не похож на макет внешне
+        loginCustomButton.button.layer.cornerRadius = 14
         loginCustomButton.button.layer.masksToBounds = true
-        //Status Button Shadow
         loginCustomButton.button.layer.shadowRadius = 4;
         loginCustomButton.button.layer.shadowColor = UIColor.white.cgColor;
         loginCustomButton.button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0);
@@ -140,24 +124,70 @@ class LogInView: UIView {
             loginCustomButton.button.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
             loginCustomButton.button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
             loginCustomButton.button.heightAnchor.constraint(equalToConstant: 50), //Height
-            //loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16), //Right
         ])
+        
+        //bruteForceButton
+        self.addSubview(bruteForceButton)
+        //autoLayout
+        bruteForceButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bruteForceButton.topAnchor.constraint(equalTo: loginCustomButton.button.bottomAnchor, constant: 16),       //Top
+            bruteForceButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
+            bruteForceButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16), //Right
+            bruteForceButton.heightAnchor.constraint(equalToConstant: 50), //Height
+        ])
+        
+        //activityIndicator
+        self.addSubview(activityIndicator)
+        activityIndicator.hidesWhenStopped = true
+        //autoLayout
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.topAnchor.constraint(equalTo: bruteForceButton.bottomAnchor, constant: 16),
+            activityIndicator.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor)
+        ])
+        
     }
     
-//    @objc func buttonLoginPressed (sender: UIButton!) {
-//        if self.delegate != nil {
-//            var check: Bool = false
-//            check = ((self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "", userPassword: passwordTextField.text ?? "")) != nil) // вызываем функцию делегата
-//            print("send delegate \(check)")
-//        }
-//    }
+    @objc func BruteForceButtonPress (sender: UIButton!) {
+        
+        let que = DispatchQueue.global(qos: .userInteractive)
+        
+        self.activityIndicator.startAnimating()
+        
+        que.async {
+            let start = DispatchTime.now()
+            let checker = Checker.shared
+            var login: String = ""
+            DispatchQueue.main.async {
+                login = self.loginTextField.text ?? "Vasily"
+            }
+            for index in 0...13000 {
+                let check: Bool = checker.checkPassword(userNameFromLogin: login, userPassword: String(index))
+                if check {
+                    print(String(index))
+                    DispatchQueue.main.async {
+                        self.passwordTextField.isSecureTextEntry = false
+                        self.passwordTextField.text = String(index)
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+            let end = DispatchTime.now()
+            print("Time of BruteForce is start " + String(start.uptimeNanoseconds))
+            print("Time of BruteForce is stop " + String(end.uptimeNanoseconds))
+        }
+    }
 }
 //MARK: -- delegate from LogIn button
 extension LogInView: CustomButtonProtocol {
     func buttonTapped() {
         if self.delegate != nil {
             var check: Bool = false
-            check = ((self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "", userPassword: passwordTextField.text ?? "")) != nil) // вызываем функцию делегата
+            check =  ((self.delegate?.sendDataToNavigationController(userNameFromLogin: loginTextField.text ?? "", userPassword: passwordTextField.text ?? "")) != nil) // вызываем функцию делегата
             print("send delegate \(check)")
         }
     }
