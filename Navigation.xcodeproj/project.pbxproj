@@ -51,6 +51,8 @@
 		55A47C3D288640520065C362 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C3B288640520065C362 /* MainCoordinator.swift */; };
 		55A47C40288643B70065C362 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C3F288643B70065C362 /* TabBar.swift */; };
 		55A47C41288643B70065C362 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C3F288643B70065C362 /* TabBar.swift */; };
+		55B42D7E28B6142300D997A9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42D7D28B6142300D997A9 /* NetworkManager.swift */; };
+		55B42D7F28B6143200D997A9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42D7D28B6142300D997A9 /* NetworkManager.swift */; };
 		55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
 		55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554792D428144A77009FD412 /* ProfileHeaderTableView.swift */; };
 		55C8BF48285B7C6F0050F6F4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BC27DC527000AAF6BB /* ProfileViewController.swift */; };
@@ -153,6 +155,7 @@
 		55A47C36287D09670065C362 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		55A47C3B288640520065C362 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		55A47C3F288643B70065C362 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		55B42D7D28B6142300D997A9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		55B9576027EBDE430057CAD9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		55B9576227EBEBD10057CAD9 /* LogInViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewView.swift; sourceTree = "<group>"; };
 		55CCD63C289B488600364D29 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +274,7 @@
 				5535A5B927DC51B100AAF6BB /* Profile */,
 				55A47C2D287CF9B80065C362 /* Feed */,
 				55A47C3E288643960065C362 /* TabBar */,
+				55B42D7C28B613F700D997A9 /* Managers */,
 				5544B61C27D4BD100028E14C /* AppDelegate.swift */,
 				5544B61E27D4BD100028E14C /* SceneDelegate.swift */,
 				5544B62027D4BD100028E14C /* ViewController.swift */,
@@ -384,6 +388,14 @@
 				55A47C3F288643B70065C362 /* TabBar.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		55B42D7C28B613F700D997A9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				55B42D7D28B6142300D997A9 /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		88EABB949B425D150F2C66AE /* Pods */ = {
@@ -680,6 +692,7 @@
 				55A47C35287CFAEE0065C362 /* FeedModel.swift in Sources */,
 				55CCD64D28A0EC3800364D29 /* FeedViewNavigationController.swift in Sources */,
 				55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */,
+				55B42D7F28B6143200D997A9 /* NetworkManager.swift in Sources */,
 				55C8BF4A285B7C760050F6F4 /* LogInViewView.swift in Sources */,
 				55C8BF4E285B7C840050F6F4 /* ViewController.swift in Sources */,
 				55C8BF49285B7C720050F6F4 /* LogInViewController.swift in Sources */,
@@ -726,6 +739,7 @@
 				55A47C19286BD2450065C362 /* Checker.swift in Sources */,
 				55A47C09286024680065C362 /* LogInViewController.swift in Sources */,
 				55A47C04286024410065C362 /* SceneDelegate.swift in Sources */,
+				55B42D7E28B6142300D997A9 /* NetworkManager.swift in Sources */,
 				55A47C0A2860246B0065C362 /* LogInViewView.swift in Sources */,
 				55A47C0C286024780065C362 /* PostTableViewCell.swift in Sources */,
 				55A47C31287CFA110065C362 /* FeedViewController.swift in Sources */,
