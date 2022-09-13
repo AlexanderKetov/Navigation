@@ -11,6 +11,8 @@ enum AppConfiguration: String {
     case linkOne = "https://swapi.dev/api/people/8"
     case linkTwo = "https://swapi.dev/api/starships/3"
     case linkThree = "https://swapi.dev/api/planets/5"
+    case linkFour = "https://jsonplaceholder.typicode.com/todos/"
+    case linkFive = "https://swapi.dev/api/planets/1"
 }
 
 final class NetworkManager {
@@ -30,22 +32,47 @@ final class NetworkManager {
         self.baseAddress = adress
     }
     
-    func request() {
-        let task = urlSession.dataTask(with: self.baseAddress) { data, response, errors in
+    func requestSerialization(completion: @escaping (Result<[[String:Any]], Error>) -> Void) {
+        
+        URLSession.shared.dataTask(with: self.baseAddress) { data, response, errors in
+            
             if (errors != nil) {
                 print("network errors localizedDescription \(String(describing: errors?.localizedDescription))")
                 print("network errors debugDescription \(String(describing: errors.debugDescription))")
             } else {
-                guard let object = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
-                      let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
-                      let dataPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return }
-                print(dataPrintedString)
-                let httpResponse = response as! HTTPURLResponse
-                print("All headers fields: \(httpResponse.allHeaderFields)")
-                print("status code: \(httpResponse.statusCode)")
+                do {
+                    guard let object = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []) as? [[String:Any]]? else {return}
+                    
+                    if let error = errors {
+                        completion(.failure(error))
+                    }
+                    if let objectIn = object {
+                        completion(.success(objectIn))
+                    }
+                }
             }
-        }
-        task.resume()
-        ()
+        }.resume()
+    }
+    
+    func request(completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        URLSession.shared.dataTask(with: self.baseAddress) { data, response, errors in
+            
+            if (errors != nil) {
+                print("network errors localizedDescription \(String(describing: errors?.localizedDescription))")
+                print("network errors debugDescription \(String(describing: errors.debugDescription))")
+            } else {
+                do {
+                    guard let object = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
+                    let dataJSON = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]) else {return}
+                    
+                    if let error = errors {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(dataJSON))
+                    }
+                }
+            }
+        }.resume()
     }
 }

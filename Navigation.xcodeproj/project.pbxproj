@@ -51,6 +51,8 @@
 		55A47C3D288640520065C362 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C3B288640520065C362 /* MainCoordinator.swift */; };
 		55A47C40288643B70065C362 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C3F288643B70065C362 /* TabBar.swift */; };
 		55A47C41288643B70065C362 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A47C3F288643B70065C362 /* TabBar.swift */; };
+		55AEBCA128CD7340001993A3 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AEBCA028CD7340001993A3 /* FeedService.swift */; };
+		55AEBCA228D05134001993A3 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AEBCA028CD7340001993A3 /* FeedService.swift */; };
 		55B42D7E28B6142300D997A9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42D7D28B6142300D997A9 /* NetworkManager.swift */; };
 		55B42D7F28B6143200D997A9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42D7D28B6142300D997A9 /* NetworkManager.swift */; };
 		55C8BF46285B7C680050F6F4 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535A5BA27DC521400AAF6BB /* ProfileHeaderView.swift */; };
@@ -155,6 +157,7 @@
 		55A47C36287D09670065C362 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		55A47C3B288640520065C362 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		55A47C3F288643B70065C362 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		55AEBCA028CD7340001993A3 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		55B42D7D28B6142300D997A9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		55B9576027EBDE430057CAD9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		55B9576227EBEBD10057CAD9 /* LogInViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewView.swift; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 		55A47C2D287CF9B80065C362 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				55AEBC9F28CD7322001993A3 /* Service */,
 				55A47C2F287CF9E50065C362 /* Model */,
 				55A47C2E287CF9D70065C362 /* Controller */,
 			);
@@ -388,6 +392,14 @@
 				55A47C3F288643B70065C362 /* TabBar.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		55AEBC9F28CD7322001993A3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				55AEBCA028CD7340001993A3 /* FeedService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		55B42D7C28B613F700D997A9 /* Managers */ = {
@@ -689,6 +701,7 @@
 				55A47C3D288640520065C362 /* MainCoordinator.swift in Sources */,
 				55CABE5C285E015B009CC235 /* AppDelegate.swift in Sources */,
 				55C8BF4B285B7C790050F6F4 /* ProfileTableHederViewController.swift in Sources */,
+				55AEBCA228D05134001993A3 /* FeedService.swift in Sources */,
 				55A47C35287CFAEE0065C362 /* FeedModel.swift in Sources */,
 				55CCD64D28A0EC3800364D29 /* FeedViewNavigationController.swift in Sources */,
 				55C8BF47285B7C6C0050F6F4 /* ProfileHeaderTableView.swift in Sources */,
@@ -754,6 +767,7 @@
 				55A47C40288643B70065C362 /* TabBar.swift in Sources */,
 				55A47C20286D2DCD0065C362 /* FactoryLoginInspector.swift in Sources */,
 				55A47C0F28606F7C0065C362 /* User.swift in Sources */,
+				55AEBCA128CD7340001993A3 /* FeedService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

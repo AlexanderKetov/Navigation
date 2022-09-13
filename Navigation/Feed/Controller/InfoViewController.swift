@@ -7,8 +7,12 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class InfoViewController: UIViewController {
+    
+    private let feedModel = FeedModel()
+    private var cancellables = Set<AnyCancellable>()
     
     var delegate: InfoPresentDelegateProtocol? = nil //объявляем делегата
     
@@ -31,6 +35,52 @@ class InfoViewController: UIViewController {
 
         self.view.addSubview(button2)
         
+        let statusLabel = UILabel()
+        statusLabel.text = "Waiting for response..."
+        statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        statusLabel.textColor = .gray
+        self.view.addSubview(statusLabel)
+        
+        let dopLabel = UILabel()
+        dopLabel.text = "Tatuin"
+        dopLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        dopLabel.textColor = .gray
+        self.view.addSubview(dopLabel)
+        
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusLabel.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 16),       //Top
+            statusLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
+            statusLabel.widthAnchor.constraint(equalToConstant: 160),   //Width
+        ])
+        
+        dopLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dopLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),       //Top
+            dopLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),       //Left
+            dopLabel.widthAnchor.constraint(equalToConstant: 160),   //Width
+        ])
+        
+        feedModel.$dataJSONSerialization
+            .sink { [weak self] dataJson in
+                if !dataJson.isEmpty {
+                    statusLabel.text = dataJson[0].title
+                }
+            }
+            .store(in: &cancellables)
+        
+        feedModel.$dataJSON
+            .sink { [weak self] dataJson in
+                if let orbitalPeriod = dataJson?.orbitalPeriod {
+                    dopLabel.text = orbitalPeriod
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    override func viewWillAppear (_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.feedModel.receiveJSON()
     }
     
     @objc func ButtonAlertPress (sender: UIButton!) {
